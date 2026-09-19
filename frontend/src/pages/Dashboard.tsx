@@ -3,6 +3,7 @@ import { getMetrics, getLogs } from '../api/client';
 import type { Metrics, AuditLog } from '../types';
 import { ShieldCheck, ShieldAlert, AlertTriangle, Activity } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import IsometricGrid from '../components/IsometricGrid';
 
 export default function Dashboard() {
   const [metrics, setMetrics] = useState<Metrics | null>(null);
@@ -34,21 +35,23 @@ export default function Dashboard() {
   if (!metrics) return <div className="font-mono text-accent animate-pulse tracking-widest text-sm uppercase">Loading sequence initiated...</div>;
 
   return (
-    <div className="space-y-8 animate-in fade-in duration-500">
-      <header className="flex items-center justify-between mb-8">
+    <div className="space-y-8 animate-in fade-in duration-500 relative">
+      <IsometricGrid />
+      
+      <header className="flex items-center justify-between mb-8 relative z-10 py-12 pointer-events-none">
         <div>
-          <p className="text-xs font-mono text-text-muted tracking-[0.2em] mb-1 uppercase">Overview</p>
-          <h2 className="text-3xl font-heading font-bold uppercase tracking-wide">Security Console</h2>
+          <p className="text-xs font-mono text-accent tracking-[0.2em] mb-1 uppercase drop-shadow-[0_0_5px_var(--color-accent-glow)]">Overview</p>
+          <h2 className="text-5xl font-heading font-bold uppercase tracking-wide">Security Console</h2>
         </div>
-        <div className="flex items-center gap-3 bg-card px-4 py-2 border border-border-subtle shadow-sm">
+        <div className="flex items-center gap-3 bg-card px-4 py-2 border border-border-subtle shadow-sm pointer-events-auto backdrop-blur-md">
           <div className="status-dot"></div>
           <span className="font-mono text-xs text-accent uppercase tracking-widest">Live Monitoring</span>
         </div>
       </header>
       
       {/* Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-        <div className="bg-card p-6 border border-border-subtle flex flex-col relative group hover:border-accent hover:shadow-[0_0_15px_var(--color-accent-glow)] transition-all duration-300 overflow-hidden">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 relative z-10">
+        <div className="bg-card backdrop-blur-md p-6 border border-border-subtle flex flex-col relative group hover:border-accent hover:shadow-[0_0_15px_var(--color-accent-glow)] transition-all duration-300 overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-allowed to-transparent opacity-50"></div>
           <div className="flex justify-between items-center mb-6">
             <h3 className="text-text-muted font-mono text-xs tracking-widest uppercase">Security Score</h3>
@@ -57,7 +60,7 @@ export default function Dashboard() {
           <p className="text-5xl font-mono font-bold text-text-primary tracking-tighter">{metrics.security_score}</p>
         </div>
         
-        <div className="bg-card p-6 border border-border-subtle relative group hover:border-accent hover:shadow-[0_0_15px_var(--color-accent-glow)] transition-all duration-300">
+        <div className="bg-card backdrop-blur-md p-6 border border-border-subtle relative group hover:border-accent hover:shadow-[0_0_15px_var(--color-accent-glow)] transition-all duration-300">
           <div className="flex justify-between items-center mb-6">
             <h3 className="text-text-muted font-mono text-xs tracking-widest uppercase">Total Requests</h3>
             <Activity className="w-5 h-5 text-accent drop-shadow-[0_0_5px_var(--color-accent)]" />
@@ -65,7 +68,7 @@ export default function Dashboard() {
           <p className="text-5xl font-mono font-bold text-text-primary tracking-tighter">{metrics.total_requests}</p>
         </div>
 
-        <div className="bg-card p-6 border border-border-subtle relative group hover:border-blocked hover:shadow-[0_0_15px_rgba(239,68,68,0.2)] transition-all duration-300 overflow-hidden">
+        <div className="bg-card backdrop-blur-md p-6 border border-border-subtle relative group hover:border-blocked hover:shadow-[0_0_15px_rgba(239,68,68,0.2)] transition-all duration-300 overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-blocked to-transparent opacity-50"></div>
           <div className="flex justify-between items-center mb-6">
             <h3 className="text-text-muted font-mono text-xs tracking-widest uppercase">Blocked</h3>
@@ -74,7 +77,7 @@ export default function Dashboard() {
           <p className="text-5xl font-mono font-bold text-blocked tracking-tighter">{metrics.blocked}</p>
         </div>
 
-        <div className="bg-card p-6 border border-border-subtle relative group hover:border-warning hover:shadow-[0_0_15px_rgba(234,179,8,0.2)] transition-all duration-300 overflow-hidden">
+        <div className="bg-card backdrop-blur-md p-6 border border-border-subtle relative group hover:border-warning hover:shadow-[0_0_15px_rgba(234,179,8,0.2)] transition-all duration-300 overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-warning to-transparent opacity-50"></div>
           <div className="flex justify-between items-center mb-6">
             <h3 className="text-text-muted font-mono text-xs tracking-widest uppercase">Warnings</h3>
@@ -84,9 +87,9 @@ export default function Dashboard() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 mt-8">
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 mt-8 relative z-10">
         {/* Chart */}
-        <div className="bg-card p-6 border border-border-subtle h-[420px] flex flex-col">
+        <div className="bg-card backdrop-blur-md p-6 border border-border-subtle h-[420px] flex flex-col">
           <p className="text-xs font-mono text-text-muted tracking-[0.2em] mb-2 uppercase">Telemetry</p>
           <h3 className="text-xl font-heading uppercase tracking-wide mb-6">Activity Timeline</h3>
           <div className="flex-1 min-h-0">
@@ -103,12 +106,12 @@ export default function Dashboard() {
         </div>
 
         {/* Recent Activity */}
-        <div className="bg-card p-6 border border-border-subtle flex flex-col h-[420px]">
+        <div className="bg-card backdrop-blur-md p-6 border border-border-subtle flex flex-col h-[420px]">
           <p className="text-xs font-mono text-text-muted tracking-[0.2em] mb-2 uppercase">Traffic Log</p>
           <h3 className="text-xl font-heading uppercase tracking-wide mb-6">Recent Interceptions</h3>
           <div className="overflow-y-auto flex-1 pr-2 custom-scrollbar">
             <table className="w-full text-left text-sm font-mono">
-              <thead className="text-text-muted sticky top-0 bg-card z-10 text-xs tracking-widest uppercase">
+              <thead className="text-text-muted sticky top-0 bg-card backdrop-blur-md z-10 text-xs tracking-widest uppercase">
                 <tr>
                   <th className="pb-4 font-normal">Tool / Origin</th>
                   <th className="pb-4 font-normal text-center">Status</th>

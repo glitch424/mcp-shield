@@ -12,6 +12,7 @@
   "dependencies": {
     "@tailwindcss/postcss": "^4.3.3",
     "@tailwindcss/vite": "^4.3.3",
+    "@types/three": "^0.186.0",
     "autoprefixer": "^10.6.1",
     "axios": "^1.20.0",
     "lucide-react": "^1.47.0",
@@ -19,7 +20,8 @@
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "recharts": "^3.10.1",
-    "tailwindcss": "^4.3.3"
+    "tailwindcss": "^4.3.3",
+    "three": "^0.186.0"
   },
   "devDependencies": {
     "@types/node": "^24.13.3",

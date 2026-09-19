@@ -49,7 +49,7 @@ export default function Policies() {
       </header>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div className="bg-card p-6 border border-border-subtle relative overflow-hidden group hover:border-allowed hover:shadow-[0_0_15px_rgba(34,197,94,0.1)] transition-all">
+        <div className="bg-card backdrop-blur-md p-6 border border-border-subtle relative overflow-hidden group hover:border-allowed hover:shadow-[0_0_15px_rgba(34,197,94,0.1)] transition-all">
           <div className="absolute top-0 left-0 w-1 h-full bg-allowed"></div>
           <h3 className="text-xl font-heading uppercase tracking-wide text-allowed mb-2">Allowed Tools</h3>
           <p className="text-xs font-mono text-text-muted tracking-widest uppercase mb-4">Tools that are always permitted.</p>
@@ -61,7 +61,7 @@ export default function Policies() {
           />
         </div>
 
-        <div className="bg-card p-6 border border-border-subtle relative overflow-hidden group hover:border-blocked hover:shadow-[0_0_15px_rgba(239,68,68,0.1)] transition-all">
+        <div className="bg-card backdrop-blur-md p-6 border border-border-subtle relative overflow-hidden group hover:border-blocked hover:shadow-[0_0_15px_rgba(239,68,68,0.1)] transition-all">
           <div className="absolute top-0 left-0 w-1 h-full bg-blocked"></div>
           <h3 className="text-xl font-heading uppercase tracking-wide text-blocked mb-2">Blocked Tools</h3>
           <p className="text-xs font-mono text-text-muted tracking-widest uppercase mb-4">Tools that will be instantly rejected.</p>
@@ -73,7 +73,7 @@ export default function Policies() {
           />
         </div>
 
-        <div className="bg-card p-6 border border-border-subtle relative overflow-hidden group hover:border-warning hover:shadow-[0_0_15px_rgba(234,179,8,0.1)] transition-all">
+        <div className="bg-card backdrop-blur-md p-6 border border-border-subtle relative overflow-hidden group hover:border-warning hover:shadow-[0_0_15px_rgba(234,179,8,0.1)] transition-all">
           <div className="absolute top-0 left-0 w-1 h-full bg-warning"></div>
           <h3 className="text-xl font-heading uppercase tracking-wide text-warning mb-2">Warning Tools</h3>
           <p className="text-xs font-mono text-text-muted tracking-widest uppercase mb-4">Tools that are allowed but flagged.</p>
@@ -85,7 +85,7 @@ export default function Policies() {
           />
         </div>
 
-        <div className="bg-card p-6 border border-border-subtle relative overflow-hidden group hover:border-accent hover:shadow-[0_0_15px_var(--color-accent-glow)] transition-all">
+        <div className="bg-card backdrop-blur-md p-6 border border-border-subtle relative overflow-hidden group hover:border-accent hover:shadow-[0_0_15px_var(--color-accent-glow)] transition-all">
           <div className="absolute top-0 left-0 w-1 h-full bg-accent"></div>
           <h3 className="text-xl font-heading uppercase tracking-wide text-accent mb-2">Restricted Paths</h3>
           <p className="text-xs font-mono text-text-muted tracking-widest uppercase mb-4">File paths that block any tool accessing them.</p>
