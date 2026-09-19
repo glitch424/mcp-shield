@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getPolicies, updatePolicies } from '../api/client';
-import { Policies as PolicyType } from '../types';
+import type { Policies as PolicyType } from '../types';
 import { Save } from 'lucide-react';
 
 export default function Policies() {

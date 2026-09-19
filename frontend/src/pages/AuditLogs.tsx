@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getLogs } from '../api/client';
-import { AuditLog } from '../types';
+import type { AuditLog } from '../types';
 
 export default function AuditLogs() {
   const [logs, setLogs] = useState<AuditLog[]>([]);

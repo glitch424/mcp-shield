@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getMetrics, getLogs } from '../api/client';
-import { Metrics, AuditLog } from '../types';
+import type { Metrics, AuditLog } from '../types';
 import { ShieldCheck, ShieldAlert, AlertTriangle, Activity } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
@@ -24,7 +24,7 @@ export default function Dashboard() {
     
     // Listen for live updates via SSE
     const eventSource = new EventSource('http://localhost:8000/logs/live');
-    eventSource.onmessage = (event) => {
+    eventSource.onmessage = (_event) => {
         // A new log arrived
         fetchData();
     };
