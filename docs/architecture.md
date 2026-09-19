@@ -55,8 +55,8 @@ flowchart TD
     SessionManager <-->|Persistent Subprocess| DockerGateway
     DockerGateway <-->|Read/Write| LocalResources
 
-    Policy <..>|Read| Policies
-    Injection <..>|Read| Patterns
+    Policy -.->|Read| Policies
+    Injection -.->|Read| Patterns
     Stdio -.->|Write Logs| AuditDB
 
     Backend -.->|Read| AuditDB
