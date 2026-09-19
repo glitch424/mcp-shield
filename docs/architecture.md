@@ -78,3 +78,4 @@ flowchart TD
    - `session_manager.py`: A singleton that maintains a long-lived connection to the downstream Docker container (fixing timeouts and cold starts).
 3. **Downstream MCP Server**: The actual execution environment (e.g., the Dockerized Obsidian Gateway) that interacts with local resources if the request is permitted.
 4. **Dashboard**: A React-based web interface (styled in a dark SOC theme) that communicates with the backend API to visualize real-time telemetry, display audit logs, and manage security policies.
+
