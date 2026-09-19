@@ -1,0 +1,14 @@
+{
+  "warning_patterns": [
+    "you are an ai"
+  ],
+  "critical_patterns": [
+    "ignore previous instructions",
+    "disregard all previous",
+    "system prompt",
+    "forget your instructions",
+    "print your instructions",
+    "new instructions:"
+  ]
+}
+
